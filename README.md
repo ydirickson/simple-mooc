@@ -60,7 +60,7 @@ python manage.py runserver
 
 ### Deploy to Heroku
 
-## Errors, problemas and contributions
+## Errors, problems and contributions
 
 ## Credits
 
