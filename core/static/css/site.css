@@ -1,0 +1,215 @@
+/**
+ * This file was adapted from PureCSS landing page example: https://purecss.io/layouts/marketing/
+ */
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body { padding-bottom: 3em; }
+
+/* default color for labels and headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+    color: #34495e;
+}
+
+/*
+ * -- HEADER, NAV and FOOTER STYLES --
+ * Customization of the page Header
+ */
+
+nav.menu {
+    background:#2d3e50;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+nav.menu a {
+    color: white;
+}
+
+nav.menu a.pure-menu-heading {
+    font-weight: 400;
+    font-size: 120%;
+}
+
+nav.menu ul {
+    width: 100%;
+}
+
+nav.menu li.pure-menu-selected a.pure-menu-link {
+    color: #6FBEF3;
+}
+
+nav.menu li.pure-menu-item a:hover,
+nav.menu li.pure-menu-item a:focus,
+nav.menu a.pure-menu-heading:hover,
+nav.menu a.pure-menu-heading:focus {
+    background:#416993;
+    color:white;
+    font-weight: 200;
+}
+
+nav.menu button {
+    display: none; /* button is hidden by default */
+    padding: 8px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 1em;
+    background: transparent;
+    color: #fff;
+    display: none;
+}
+
+nav.menu button[aria-expanded=true],
+nav.menu button:hover {
+    background: #fff;
+    color: #000;
+  }
+
+/*nav.menu button span {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}*/
+
+nav.menu ul.account {
+    float:right;
+}
+
+nav.menu.js ul {
+    display: none; /* hide the navigation list when JS is available */
+}
+
+nav.menu.js button {
+    display: inline-block; /* show the button JS is available */
+    margin-left: auto;
+    margin-bottom: 0.3em;
+}
+
+nav.menu.js ul.is-active {
+    display: flex;
+    border-top: 2px solid #307e7e;
+    flex-flow: column nowrap;
+}
+
+footer.footer {
+    background: #111;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    color: #CECECE;
+}
+
+ /*
+ 
+.pure-menu.pure-menu-fixed {
+    /* Fixed menus normally have a border at the bottom. 
+    border-bottom: none;
+    /* I need a higher z-index here because of the scroll-over effect. 
+    z-index: 4;
+}
+
+*/
+
+/*
+ * Common Styles
+ */
+ .splash {
+    margin-top: 3em;
+    padding: 1em;
+    background: #CECECE;
+ }
+
+ .splash .splash-head {
+     color: black;
+     font-size: 300%;
+ }
+
+ .splash .splash-subhead {
+    color: #999;
+    font-weight: 300;
+ }
+
+ .splash .primary-button {
+    font-size: 150%;
+    background: #007cff;
+    color:white;
+    font-weight: bold;
+ }
+
+ .splash .primary-button:hover,
+ .splash .primary-button:focus{
+    background: #1e6cb9;
+ }
+
+@media (min-width: 700px) {
+    nav.menu.js ul,
+    nav.menu.js ul.is-active {
+        display: flex;
+        flex-flow: row nowrap;
+        flex: 1;
+        border: 0;
+    }
+    
+    nav.menu.js button {    
+        display: none;
+    }
+
+    nav.menu button {
+        display: none;
+    }
+
+    nav.menu li {
+        display: inline-block;
+    }
+
+    nav.menu li.account {
+        margin-left: auto;
+    }
+
+}
+
+section.content {
+    padding: 3em 2em;
+ }
+
+section.content article {
+    border-bottom: 1px solid #eee;
+}
+section.content article img {
+    width: 100%;
+    height: auto;
+}
+
+section.content article > div {
+    padding: 1em;
+}
+
+section.content article h3 {
+    text-transform: uppercase;
+    display: inline-block;
+    border-bottom: 2px solid #34495e;
+    margin: 0;
+    padding-bottom: 0.5em;
+}
+
+section.content article h4 {
+    color:black;
+}
