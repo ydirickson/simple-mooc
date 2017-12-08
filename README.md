@@ -19,6 +19,45 @@ The project is redy for running locally or in the cloud at [Heroku](https://hero
 
 ### Run Locally
 
+To run the project on your local PC, you have to install the requirements and use the local server.
+
+1. Clone the repository:
+```
+git clone https://github.com/ydirickson/simple-mooc.git
+cd simple-mooc
+```
+
+2. Install Python Virtual Environment:
+```
+pip install virtualenv
+```
+
+3. Prepare the virtual environment:
+```
+virtualent venv
+```
+
+4. Activate the virtual environment:
+```
+(Windows)
+venv\Scripts\activate
+(Unix)
+venv/bin/activate
+```
+
+5. Install the requirements:
+```
+pip install -r requirements.txt
+```
+
+6. Run local server:
+```
+python manage.py runserver
+```
+
+7. Navigate to http://localhost:8000 on the browser
+
+
 ### Deploy to Heroku
 
 ## Errors, problemas and contributions
