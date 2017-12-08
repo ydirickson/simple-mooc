@@ -102,3 +102,6 @@ ENV/
 
 # other
 .vscode
+
+# SQLite3
+db.sqlite3
