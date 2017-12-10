@@ -11,7 +11,7 @@ The following are required for this project:
 
 * Python 3.6.x (3.5.x and 3.4.x should also work, but was not tested)
 * Django 2.0.X (There are few modifications to work with 1.11.X)
-* PureCSS ?
+* PureCSS 1.0.0
 
 ## Running
 
