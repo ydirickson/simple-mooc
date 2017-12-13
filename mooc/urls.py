@@ -20,7 +20,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('core.urls', namespace='core')),
-    path('courses', include('courses.urls', namespace='courses')),
+    path('courses/', include('courses.urls', namespace='courses')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
