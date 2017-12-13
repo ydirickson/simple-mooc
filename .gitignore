@@ -103,5 +103,6 @@ ENV/
 # other
 .vscode
 
-# SQLite3
+# SQLite3 and others
 db.sqlite3
+/media

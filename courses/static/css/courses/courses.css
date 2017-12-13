@@ -1,0 +1,13 @@
+section.content article.pure-g:nth-child(odd) div.image,
+section.content article.pure-g:nth-child(even) div.description {
+    order: 1;
+}
+section.content article.pure-g:nth-child(even) div.image,
+section.content article.pure-g:nth-child(odd) div.description {
+    order: 2;
+}
+
+div.description h3 a {
+    text-decoration: none;
+    color: inherit;
+}

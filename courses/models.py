@@ -4,6 +4,7 @@ class Course(models.Model):
 
     name = models.CharField("Nome", max_length=100)
     slug = models.SlugField("Atalho")
+    short_description = models.CharField("Descrição Curta", max_length=100, blank=True)
     description = models.TextField("Descrição", blank=True)
     start_date = models.DateField("Data de Início", null=True, blank=True)
     image = models.ImageField(
