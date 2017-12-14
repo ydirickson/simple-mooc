@@ -213,3 +213,9 @@ section.content article h3 {
 section.content article h4 {
     color:black;
 }
+
+ul.errorList {
+    list-style-type: none;
+    color: red;
+    margin-left: 9em;
+}
