@@ -129,10 +129,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# Email configuration
-# https://docs.djangoproject.com/en/2.0/topics/email/
+# E-mail configuration
+# https://docs.djangoproject.com/en/2.0/topics/email
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = ""
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = "admin@mg.ymrd.com.br"
+CONTACT_EMAIL = "admin@mg.ymrd.com.br"
 
 # Local Settings (when exists)
 try:
