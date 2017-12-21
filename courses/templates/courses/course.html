@@ -10,6 +10,11 @@
 {% endblock %}
 
 {% block content %}
+
+    {% if sent %}
+        <div class="alert success">Mensagem enviada com sucesso!<span class="closebtn">&times;</span></div>
+    {% endif %}
+
     <section class="splash">
         <h1 class="splash-head">
             {{ course.name }}

@@ -1,2 +1,4 @@
 Django==2.0
 Pillow==4.3.0
+pylint==1.7.4
+python-decouple==3.1
