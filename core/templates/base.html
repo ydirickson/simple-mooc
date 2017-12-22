@@ -27,6 +27,7 @@
                         <li class="pure-menu-item {% if view == 'core:contact' %}pure-menu-selected{% endif %}"><a href="{% url 'core:contact' %}" class="pure-menu-link">Contato</a></li>
                         {% if user.is_authenticated  %}
                             <li class="pure-menu-heading account">Olá {{ user }}</li>
+                            <li class="pure-menu-item {% if view == 'accounts:dashboard' %}pure-menu-selected{% endif %}"><a href="{% url 'accounts:dashboard' %}" class="pure-menu-link">Painel</a></li>
                             <li class="pure-menu-item {% if view == 'accounts:logout' %}pure-menu-selected{% endif %}"><a href="{% url 'accounts:logout' %}" class="pure-menu-link">Sair</a></li>
                         {% else %}
                             <li class="pure-menu-item account {% if view == 'accounts:login' %}pure-menu-selected{% endif %}"><a href="{% url 'accounts:login' %}" class="pure-menu-link">Entrar</a></li>

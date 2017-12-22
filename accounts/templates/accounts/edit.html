@@ -1,0 +1,46 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} | Editar Conta
+{% endblock %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li><a href="{% url 'accounts:edit' %}">Editar Conta</a></li>
+{% endblock %}
+
+{% block panel-content %}
+    <h2>Editar Informações de Conta</h2>
+    {% if success %}
+        <div class="alert success">Dados alterados com sucesso!<span class="closebtn">&times;</span></div>
+    {% endif %}
+    <form class="pure-form pure-form-aligned" method="POST">
+        <fieldset>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <ul class="errorList">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% for field in form %}
+                <div class="pure-control-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <ul class="errorList">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Salvar</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

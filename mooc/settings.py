@@ -140,8 +140,10 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 CONTACT_EMAIL = config("CONTACT_EMAIL")
 
 
-# Authentication
+# Custom Authentication and User
+# https://docs.djangoproject.com/en/2.0/topics/auth/customizing
 
+AUTH_USER_MODEL = "accounts.User"
 LOGIN_URL = "accounts:login"
 LOGOUT_URL = "accounts:logout"
 LOGIN_REDIRECT_URL = "core:home"
