@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #My apps
     "core",
-    "courses"
+    "courses",
+    "accounts"
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,12 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 CONTACT_EMAIL = config("CONTACT_EMAIL")
 
+
+# Authentication
+
+LOGIN_URL = "accounts:login"
+LOGOUT_URL = "accounts:logout"
+LOGIN_REDIRECT_URL = "core:home"
 
 # Local Settings (when exists)
 try:

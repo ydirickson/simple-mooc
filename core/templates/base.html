@@ -25,8 +25,13 @@
                         <li class="pure-menu-item {% if view == 'core:home' %}pure-menu-selected{% endif %} "><a href="{% url 'core:home' %}" class="pure-menu-link">Início</a></li>
                         <li class="pure-menu-item {% if 'courses:' in view %}pure-menu-selected{% endif %}"><a href="{% url 'courses:index' %}" class="pure-menu-link">Cursos</a></li>
                         <li class="pure-menu-item {% if view == 'core:contact' %}pure-menu-selected{% endif %}"><a href="{% url 'core:contact' %}" class="pure-menu-link">Contato</a></li>
-                        <li class="pure-menu-item account {% if view == 'accounts:login' %}pure-menu-selected{% endif %}"><a href="#" class="pure-menu-link">Entrar</a></li>
-                        <li class="pure-menu-item {% if view == 'accounts:logoff' %}pure-menu-selected{% endif %}"><a href="#" class="pure-menu-link">Registrar</a></li>
+                        {% if user.is_authenticated  %}
+                            <li class="pure-menu-heading account">Olá {{ user }}</li>
+                            <li class="pure-menu-item {% if view == 'accounts:logout' %}pure-menu-selected{% endif %}"><a href="{% url 'accounts:logout' %}" class="pure-menu-link">Sair</a></li>
+                        {% else %}
+                            <li class="pure-menu-item account {% if view == 'accounts:login' %}pure-menu-selected{% endif %}"><a href="{% url 'accounts:login' %}" class="pure-menu-link">Entrar</a></li>
+                            <li class="pure-menu-item {% if view == 'accounts:register' %}pure-menu-selected{% endif %}"><a href="{% url 'accounts:register' %}" class="pure-menu-link">Registrar</a></li>
+                        {% endif %}
                     </ul>
                 {% endwith %}
             </nav>

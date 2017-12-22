@@ -77,15 +77,10 @@ nav.menu button:hover {
     color: #000;
   }
 
-/*nav.menu button span {
-    position: absolute;
-    clip: rect(1px, 1px, 1px, 1px);
-    padding: 0;
-    border: 0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-}*/
+nav.menu li.pure-menu-heading {
+    color: white;
+    font-weight: bolder;
+}
 
 nav.menu ul.account {
     float:right;

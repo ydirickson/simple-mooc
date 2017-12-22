@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} | Login
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <h1>Informe seus dados de cadastro</h1>
+        <form class="pure-form pure-form-aligned" method="POST">
+            <fieldset>
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <ul class="errorList">
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% for field in form %}
+                    <div class="pure-control-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <ul class="errorList">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary">Entrar</button>
+                </div>
+                <div class="pure-controls">Não é cadastrado? <a href="{% url 'accounts:register' %}">Cadastre-se</a></div>
+                <div class="pure-controls">Esqueceu a senha? <a href="#">Nova senha</a></div>
+            </fieldset>
+        </form>
+    </section>
+{% endblock %}
