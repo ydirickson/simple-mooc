@@ -1,10 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import (PasswordChangeForm, SetPasswordForm)
 
-from .forms import RegisterUserForm, EditAccountForm
+from mooc.utils import generate_hash_key
+
+from .forms import RegisterUserForm, EditAccountForm, PasswordResetForm
+from .models import PasswordReset
+
+User = get_user_model()
 
 @login_required
 def dashboard(request):
@@ -25,6 +30,31 @@ def edit_password(request):
         form = PasswordChangeForm(user=request.user)
     context["form"] = form
     return render(request, "accounts/edit_password.html", context)
+
+def reset_password(request):
+    template_name = "accounts/reset_password.html"
+    form = PasswordResetForm(request.POST or None)
+    context = {}
+    if form.is_valid():
+        form.save()        
+        context["sucesso"] = True
+
+    context["form"] = form
+    
+    return render(request, template_name, context)
+
+def confirm_reset_password(request, key):
+    template_name = "accounts/confirm_reset_password.html"
+    context = {}
+    reset = get_object_or_404(PasswordReset, key=key)
+    form = SetPasswordForm(user=reset.user, data=request.POST or None)
+    if form.is_valid():
+        form.save()
+        context["sucesso"] = True
+
+    context["form"] = form
+
+    return render(request, template_name, context)
 
 @login_required
 def edit(request):
@@ -57,4 +87,5 @@ def register(request):
         "form": form
     }
     return render(request, "accounts/register.html", context)
+    
 

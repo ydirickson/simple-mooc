@@ -38,7 +38,7 @@
                     <button type="submit" class="pure-button pure-button-primary">Entrar</button>
                 </div>
                 <div class="pure-controls">Não é cadastrado? <a href="{% url 'accounts:register' %}">Cadastre-se</a></div>
-                <div class="pure-controls">Esqueceu a senha? <a href="#">Nova senha</a></div>
+                <div class="pure-controls">Esqueceu a senha? <a href="{% url 'accounts:reset' %}">Nova senha</a></div>
             </fieldset>
         </form>
     </section>
