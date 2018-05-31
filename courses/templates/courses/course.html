@@ -22,6 +22,7 @@
         <h2 class="splash-subhead">
             {{ course.short_description }}
         </h2>
+        <a href="{% url 'courses:enrollment' course.slug %}" class="pure-button pure-button-primary">Inscreva-se</a>
     </section>
     <section class="content">
         <article class="pure-g">
@@ -55,7 +56,7 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <div class="pure-controls">        
+                <div class="pure-controls">
                     <button type="submit" class="pure-button pure-button-primary">Enviar</button>
                 </div>
             </form>

@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-
-from .models import Course
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Course, Enrollment
 from .forms import ContactCourseForm
 
 def courses(request):
@@ -23,3 +23,15 @@ def detail(request, slug):
     context["form"] = form
     context["course"] = course
     return render(request,"courses/course.html", context)
+
+@login_required
+def enrollment(request, slug):
+    context = {}
+    course = get_object_or_404(Course, slug=slug)
+    enrollment, created = Enrollment.objects.get_or_create(
+        user=request.user, course=course
+    )
+    if created:
+        enrollment.activate()
+    
+    return redirect("accounts:dashboard")
