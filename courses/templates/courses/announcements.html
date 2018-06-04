@@ -11,17 +11,29 @@
 
 {% block panel-content %}
 
-    <div class="well">
-        <h2>Teste de Título</h2>
-        <p>
-            Teste de conteúdo!
-        </p>
-        <p>
-            <a href="#comments" title="">
-                <i class="fas fa-comments-o"></i>
-                10 Comentários
-            </a>
-        </p>
-    </div>
+    {% for announcement in announcements %}
+        <div class="well">
+            <h2>
+                <a href="{% url 'courses:show-announcement' course.slug announcement.id %}">
+                    {{ announcement }}
+                </a>
+            </h2>
+            <p>
+                {{ announcement.content | linebreaks }}
+            </p>
+            <p>
+                    <a href="{% url 'courses:show-announcement' course.slug announcement.id %}#comments">
+                    <i class="fas fa-comments"></i>
+                    {% with announcement.comments.count as contagem %}
+                        {{ contagem }} Comentário{{ contagem|pluralize }}
+                    {% endwith %}
+                </a>
+            </p>
+        </div>
+        {% empty %}
+        <div class="well">
+            <h2>Nenhum anúncio no momento!</h2>
+        </div>
+    {% endfor %}
 
 {% endblock %}

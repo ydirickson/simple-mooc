@@ -61,8 +61,22 @@ def announcements(request, slug):
             messages.error(request, "A sua inscrição está pendente!")
             return redirect("accounts:dashboard")
     context = {
-        "course": course
+        "course": course,
+        "announcements": course.announcements.all()
     }
     return render(request, "courses/announcements.html", context)
     
-
+@login_required
+def show_announcement(request, slug, id):
+    course = get_object_or_404(Course, slug=slug)
+    if not request.user.is_staff:
+        enrollment = get_object_or_404(Enrollment, user=request.user, course=course)
+        if not enrollment.is_approved():
+            messages.error(request, "A sua inscrição está pendente!")
+            return redirect("accounts:dashboard")
+    announcement = get_object_or_404(course.announcements.all(),pk=id)
+    context = {
+        "course": course,
+        "announcement":announcement
+    }
+    return render(request, "courses/show_announcement.html", context)

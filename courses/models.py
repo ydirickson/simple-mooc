@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 
+from core.models import Model
+
 class Course(models.Model):
 
     name = models.CharField("Nome", max_length=100)
@@ -73,3 +75,42 @@ class Enrollment(models.Model):
         unique_together = (
             ("user","course"),
         )
+
+class Announcement(Model):
+
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.DO_NOTHING,
+        related_name="announcements",
+        verbose_name="Curso"
+    )
+    title = models.CharField("Título", max_length=100)
+    content = models.TextField("Conteúdo")
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Anúncio"
+        verbose_name_plural = "Anúncios"
+        ordering = ["-created_at"]
+
+class Comment(Model):
+
+    announcement = models.ForeignKey(
+        Announcement,
+        on_delete=models.DO_NOTHING,
+        verbose_name="Comentários",
+        related_name="comments"
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.DO_NOTHING,
+        verbose_name="Usuário"
+    )
+    comment = models.TextField("Comentário")
+
+    class Meta:
+        verbose_name = "Comentário"
+        verbose_name_plural = "Comentários"
+        ordering = ["created_at"]
