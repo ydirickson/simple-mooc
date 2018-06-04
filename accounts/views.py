@@ -3,8 +3,10 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import (PasswordChangeForm, SetPasswordForm)
+from django.contrib import messages
 
 from mooc.utils import generate_hash_key
+from courses.models import Enrollment
 
 from .forms import RegisterUserForm, EditAccountForm, PasswordResetForm
 from .models import PasswordReset
@@ -14,9 +16,9 @@ User = get_user_model()
 @login_required
 def dashboard(request):
     context = {
-
+        "enrollments": Enrollment.objects.filter(user=request.user)
     }
-    return render(request, "accounts/dashboard.html")
+    return render(request, "accounts/dashboard.html", context)
 
 @login_required
 def edit_password(request):
@@ -25,7 +27,8 @@ def edit_password(request):
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            context["success"] = True
+            messages.success(request, "Senha auterada com sucesso")
+            return redirect("accounts:dashboard")
     else:
         form = PasswordChangeForm(user=request.user)
     context["form"] = form
@@ -64,7 +67,7 @@ def edit(request):
         if form.is_valid():
             form.save()
             form = EditAccountForm(instance=request.user)
-            context["success"] = True
+            messages.success(request, "Dados alterados com sucesso!")
     else:
         form = EditAccountForm(instance=request.user)
     context["form"] = form
@@ -87,5 +90,3 @@ def register(request):
         "form": form
     }
     return render(request, "accounts/register.html", context)
-    
-

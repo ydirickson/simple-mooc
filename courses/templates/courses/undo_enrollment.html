@@ -1,0 +1,25 @@
+{% extends "courses/base_courses.html" %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>
+        <a href="{% url 'courses:undo-enrollment' course.slug %}">
+            Cancelar Inscrição
+        </a>
+    </li>
+{% endblock %}
+
+{% block panel-content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h3>Você deseja realmente cancelar a inscrição deste curso?</h3>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">
+                Confirmar
+            </button>
+            <a href="{% url 'courses:announcements' course.slug %}" class="pure-button button-error">
+                Cancelar
+            </a>
+        </div>
+    </form>
+{% endblock %}

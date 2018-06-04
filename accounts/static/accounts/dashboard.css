@@ -85,3 +85,13 @@ ul.breadcrumb li a:hover {
 ul.breadcrumb li a:hover:after { 
     border-left-color: #525ea5 !important; 
 }
+
+div.well {
+    border: 1.5px solid gray;
+    border-radius: 3px;
+}
+
+div.well h3 {
+    color:black;
+    border: 0;
+}

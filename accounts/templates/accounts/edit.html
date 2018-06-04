@@ -12,9 +12,6 @@
 
 {% block panel-content %}
     <h2>Editar Informações de Conta</h2>
-    {% if success %}
-        <div class="alert success">Dados alterados com sucesso!<span class="closebtn">&times;</span></div>
-    {% endif %}
     <form class="pure-form pure-form-aligned" method="POST">
         <fieldset>
             {% csrf_token %}

@@ -1,0 +1,27 @@
+{% extends "courses/base_courses.html" %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>
+        <a href="{% url 'courses:announcements' course.slug %}">
+            Anúncios
+        </a>
+    </li>
+{% endblock %}
+
+{% block panel-content %}
+
+    <div class="well">
+        <h2>Teste de Título</h2>
+        <p>
+            Teste de conteúdo!
+        </p>
+        <p>
+            <a href="#comments" title="">
+                <i class="fas fa-comments-o"></i>
+                10 Comentários
+            </a>
+        </p>
+    </div>
+
+{% endblock %}
